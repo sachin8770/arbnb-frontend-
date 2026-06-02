@@ -11,7 +11,8 @@ function Bodycomp() {
           </h1>
 
           <p className="text-gray-500 mt-2">
-            Manage your homes, bookings, favourites and profile here.
+            this is code review comments 
+            Manage your homes, bookings, favourites and profile here.this is 
           </p>
         </main>
       </div>
