@@ -75,7 +75,7 @@ function AddHome() {
                      disabled={!loading?false:true}
                     className="w-full bg-rose-500 text-white py-3 rounded-xl font-semibold hover:bg-rose-600"
                 >
-                   {!loading?"Add Home":"AddingHome.."}   {/*coderabbit tesa  */}
+                   {!loading?"Add Home":"AddingHome.."}   {/*coderabbit tesa1  */}
                 </button>
             </form>
         </div>
