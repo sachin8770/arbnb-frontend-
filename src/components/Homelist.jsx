@@ -13,7 +13,7 @@ import {
   markFetchdone,
   markHomeFavourite,
   markHomeUnfavourite,
-} from "../store/homeSlice";
+} from "../store/HomeSlice";
 
 import {
   favouriteRequestStart,
