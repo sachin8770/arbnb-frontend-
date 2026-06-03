@@ -1,4 +1,4 @@
-import HomeList from "./HomeList";
+import HomeList from "./Homelist";
 
 function Home() {
   return (
