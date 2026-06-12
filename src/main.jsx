@@ -9,13 +9,16 @@ import App from "./App.jsx";
 import Bodycomp from "./components/Bodycomp.jsx";
 import Home from "./components/Home.jsx";
 
-import AddHome from "./components/Addhomecomp.jsx";
+import AddHome from "./components/Addhomecomp.js";
 
 import Signup from "./components/Signupcomp.jsx";
 import Login from "./components/Logincomp.jsx";
 import Favourites from "./components/Favouritescomponent.jsx";
 import Profile from "./components/frofilecomp.jsx";
 import HomeDetail from "./components/HomeDetailcomp.jsx";
+import MyBookings from "./components/mybookings.jsx";
+import MyHomes from "./components/Myhomescomp.jsx";
+import SearchResults from "./components/Searchcomponent.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,9 +50,21 @@ const router = createBrowserRouter([
         element: <Profile />
       }
       , {
-        path:"/homes/:homeId",
+        path: "/homes/:homeId",
         element: <HomeDetail />
-      }
+      },
+      {
+        path: "/my-bookings",
+        element: <MyBookings />
+      },
+      {
+        path: "/Hosthome",
+        element: <MyHomes />
+      },
+      {
+        path: "/search",
+        element: <SearchResults />,
+      },
     ]
   },
 ]);

@@ -1,6 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Home } from "../types/Home";
 
-const initialState = {
+
+
+
+interface HomeState {
+  homes: Home[];
+  loading: boolean;
+  error: string | null;
+  fetchDone: boolean;
+}
+
+
+const initialState: HomeState = {
   homes: [],
   loading: false,
   error: null,
@@ -17,7 +29,11 @@ const homeSlice = createSlice({
       state.error = null;
     },
 
-    fetchHomesSuccess: (state, action) => {
+   
+    fetchHomesSuccess: (
+      state,
+      action: PayloadAction<Home[]>
+    ) => {
       state.loading = false;
       state.homes = action.payload;
     },
@@ -30,17 +46,28 @@ const homeSlice = createSlice({
       state.fetchDone = false;
     },
 
-    fetchHomesError: (state, action) => {
+    
+    fetchHomesError: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       state.loading = false;
       state.error = action.payload;
     },
 
-    addHomeSuccess: (state, action) => {
+    
+    addHomeSuccess: (
+      state,
+      action: PayloadAction<Home>
+    ) => {
       state.homes.push(action.payload);
     },
 
-    // NEW
-    markHomeFavourite: (state, action) => {
+   
+    markHomeFavourite: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       const home = state.homes.find(
         (home) => home._id === action.payload
       );
@@ -50,11 +77,12 @@ const homeSlice = createSlice({
       }
     },
 
-    // NEW
-    markHomeUnfavourite: (state, action) => {
-      const home = state.homes.find(
-        (home) => home._id === action.payload
-      );
+   
+    markHomeUnfavourite: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      const home = state.homes.find((home) => home._id === action.payload);
 
       if (home) {
         home.isFavourite = false;
@@ -70,8 +98,6 @@ export const {
   addHomeSuccess,
   markFetchdone,
   resetFetchdone,
-
-  // NEW EXPORTS
   markHomeFavourite,
   markHomeUnfavourite,
 } = homeSlice.actions;

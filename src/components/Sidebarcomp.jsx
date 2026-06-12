@@ -58,7 +58,7 @@ function Sidebar() {
           </NavLink>
 
           <NavLink
-            to="/bookings"
+            to="/my-bookings"
             className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-rose-50 hover:text-rose-500"
           >
             <CalendarCheck size={20} />
@@ -74,7 +74,7 @@ function Sidebar() {
           </NavLink>
 
           <NavLink
-            to="/Hosthome"
+            to="/Hosthome" 
             className={user?.role=="host"?"flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-rose-50 hover:text-rose-500":"hidden"}
           >
 

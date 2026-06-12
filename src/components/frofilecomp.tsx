@@ -1,13 +1,16 @@
 import { useSelector } from "react-redux";
+import type { RootState } from "../store/store";
 
 function Profile() {
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector(
+    (state: RootState) => state.auth
+  );
 
   if (!user) {
     return (
       <div className="p-6">
         <h2 className="text-xl font-semibold">
-          User not found
+          Please login
         </h2>
       </div>
     );
@@ -15,13 +18,11 @@ function Profile() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      {/* PROFILE CARD */}
       <div className="bg-white shadow rounded-2xl p-6">
         <h1 className="text-3xl font-bold mb-6">
           My Profile
         </h1>
 
-        {/* ADDED USER DETAILS */}
         <div className="space-y-4">
           <div>
             <p className="text-gray-500">
@@ -61,7 +62,6 @@ function Profile() {
         </div>
       </div>
 
-      {/* ADDED ACCOUNT SUMMARY */}
       <div className="bg-white shadow rounded-2xl p-6 mt-6">
         <h2 className="text-xl font-semibold mb-4">
           Account Summary

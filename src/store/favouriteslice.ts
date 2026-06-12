@@ -1,6 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Favourite } from "../types/Favourites";
 
-const initialState = {
+interface InitialState {
+  favourites: Favourite[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: InitialState = {
   favourites: [],
   loading: false,
   error: null,
@@ -16,19 +23,28 @@ const favouriteSlice = createSlice({
       state.error = null;
     },
 
-    getFavouritesSuccess: (state, action) => {
+    getFavouritesSuccess: (
+      state,
+      action: PayloadAction<Favourite[]>
+    ) => {
       state.loading = false;
       state.favourites = action.payload;
       state.error = null;
     },
 
-    addFavouriteSuccess: (state, action) => {
+    addFavouriteSuccess: (
+      state,
+      action: PayloadAction<Favourite>
+    ) => {
       state.loading = false;
       state.favourites.push(action.payload);
       state.error = null;
     },
 
-    removeFavouriteSuccess: (state, action) => {
+    removeFavouriteSuccess: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       state.loading = false;
 
       state.favourites = state.favourites.filter(
@@ -38,7 +54,10 @@ const favouriteSlice = createSlice({
       state.error = null;
     },
 
-    favouriteRequestFail: (state, action) => {
+    favouriteRequestFail: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       state.loading = false;
       state.error = action.payload;
     },

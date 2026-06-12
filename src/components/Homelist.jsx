@@ -24,7 +24,8 @@ import { Navigate } from "react-router-dom";
 function HomeList() {
   const dispatch = useDispatch();
     const navigate = useNavigate();
-  // ADDED: accepts homeId from button click
+    const user = useSelector((state) => state.auth.user);
+ 
 const handleViewDetails = (homeId) => {
   navigate(`/homes/${homeId}`);
 };
@@ -32,6 +33,10 @@ const handleViewDetails = (homeId) => {
   const { homes, loading, error, fetchDone } = useSelector(
     (state) => state.homes
   );
+  console.log(homes);
+  homes.map((home)=>{
+    console.log(home.isFavourite);
+  })
 
   const addToFavouriteHandler = async (homeId) => {
     try {
@@ -67,7 +72,7 @@ const handleViewDetails = (homeId) => {
         dispatch(fetchHomesStart());
 
         const data = await gethomesfrmdb();
-
+           console.log(data);
         dispatch(fetchHomesSuccess(data.data || data));
         dispatch(markFetchdone());
       } catch (err) {
@@ -123,7 +128,7 @@ const handleViewDetails = (homeId) => {
                     ? removeFavouriteshandeler(home._id)
                     : addToFavouriteHandler(home._id)
                 }
-                className="flex-1 bg-rose-500 text-white py-2 rounded-lg hover:bg-rose-600"
+                className={user?"flex-1 bg-rose-500 text-white py-2 rounded-lg hover:bg-rose-600":"hidden"}
               >
                 {home.isFavourite
                   ? "Remove Favourite"
@@ -132,7 +137,7 @@ const handleViewDetails = (homeId) => {
 
               <button
                 onClick={()=>handleViewDetails(home._id)}
-                className="flex-1 border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
+                className={user?"flex-1 border border-gray-300 py-2 rounded-lg hover:bg-gray-100":"hidden"}
               >
                 View Details
               </button>

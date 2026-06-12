@@ -1,32 +1,81 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getHomeById } from "../controllers/Gethomebyid";
-
-  
+import { addBooking } from "../controllers/adddbookings";
+import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getFavouritesSuccess } from "../store/favouriteslice";
+import { createorder } from "../controllers/createrodercontroller";
+import { verifyPayment } from "../controllers/verifypayment";
+
 const HomeDetail = () => {
+  const dispatch = useDispatch();
   const { homeId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, isLoggedIn } = useSelector(
+    (state) => state.auth
+  );
 
+  const handleBooking = async () => {
+    if (!isLoggedIn) {
+      navigate("/login", {
+        state: { from: location.pathname },
+      });
+      return;
+    }
 
-const navigate = useNavigate();
+    try {
+      const data = await createOrder(home._id);
 
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY,
 
-const user = null;
+        amount: data.order.amount,
 
+        currency: "INR",
 
+        order_id: data.order.id,
 
-const location = useLocation();
+        name: "Arbnb",
 
-const handleBooking = () => {
-  if (!user) {
-    navigate("/login", {
-      state: { from: location.pathname }
-    });
-    return;
-  }
+        description: home.name,
 
-  navigate(`/book/${home._id}`);
-};;
+        handler: async function (response) {
+          try {
+            const verifyData =
+              await verifyPayment({
+                homeId: data.homeId,
+
+                razorpay_order_id:
+                  response.razorpay_order_id,
+
+                razorpay_payment_id:
+                  response.razorpay_payment_id,
+
+                razorpay_signature:
+                  response.razorpay_signature,
+              });
+
+            if (verifyData.success) {
+              navigate("/my-bookings");
+            }
+          } catch (error) {
+            alert(error.message);
+          }
+        },
+      };
+
+      const razorpay =
+        new window.Razorpay(options);
+
+      razorpay.open();
+    } catch (error) {
+      console.log(error);
+      alert(error.message || "Booking failed");
+    }
+  };
   const [home, setHome] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -44,6 +93,13 @@ const handleBooking = () => {
 
     fetchHome();
   }, [homeId]);
+  useEffect(() => {
+    if (user?.favourites) {
+      dispatch(
+        getFavouritesSuccess(user.favourites)
+      );
+    }
+  }, [user, dispatch]);
 
   if (loading) {
     return <h1 className="text-center mt-10 text-xl">Loading...</h1>;
