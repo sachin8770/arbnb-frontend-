@@ -8,34 +8,56 @@ import {
   loginSuccess,
   authFail,
 } from "../store/userloginedslice";
+import { AppDispatch, RootState } from "../store/store";
+import type { User } from "../types/user";
 
 function Login() {
+
+
+type LoginData = {
+  user: User;
+  accessToken: string;
+  refreshToken: string;
+};
+
+type LoginResponse = {
+  statusCode: number;
+  data: LoginData;
+  message: string;
+  success: boolean;
+};
+type LoginFormData = {
+  email: string;
+  password: string;
+};
   const location = useLocation();
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { loading, error, isLoggedIn, authChecked, user } = useSelector(
-    (state) => state.auth
+    (state:RootState) => state.auth
   );
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+ const [formData, setFormData] = useState<LoginFormData>({
+  email: "",
+  password: "",
+});
+
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
   });
+};
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   try {
     dispatch(authCheckStart());
 
-    const loginuserdata = await postloginuser(formData);
+    const loginuserdata: LoginResponse = await postloginuser(formData);
+
+    console.log(loginuserdata);
 
     dispatch(loginSuccess(loginuserdata.data.user));
 
@@ -44,7 +66,11 @@ const handleSubmit = async (e) => {
     navigate(from, { replace: true });
 
   } catch (err) {
-    dispatch(authFail(err.message));
+    if (err instanceof Error) {
+      dispatch(authFail(err.message));
+    } else {
+      dispatch(authFail("Something went wrong"));
+    }
   }
 };
   if (!authChecked) {

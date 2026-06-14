@@ -29,6 +29,7 @@ const favouriteSlice = createSlice({
     ) => {
       state.loading = false;
       state.favourites = action.payload;
+      console.log(action.payload);
       state.error = null;
     },
 

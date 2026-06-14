@@ -1,5 +1,5 @@
 
-export const createorder = async (homeId) => {
+export const createOrder = async (homeId) => {
   const response = await fetch(
   `http://localhost:3000/booking/create-order/${homeId}`,
   {

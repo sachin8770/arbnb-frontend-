@@ -3,9 +3,9 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getHomeById } from "../controllers/Gethomebyid";
-import { getFavouritesSuccess } from "../store/favouriteslice";
-import { createOrder } from "../controllers/createrodercontroller";
-import { verifyPayment } from "../controllers/verifypayment";
+import { addBooking } from "../controllers/adddbookings";
+// import { createOrder } from "../controllers/createrodercontroller";
+// import { verifyPayment } from "../controllers/verifypayment";
 
 import type { RootState, AppDispatch } from "../store/store";
 
@@ -52,7 +52,7 @@ const HomeDetail: React.FC = () => {
   const { user, isLoggedIn } = useSelector(
     (state: RootState) => state.auth
   );
-
+  console.log(user);
   const [home, setHome] = useState<Home | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -67,6 +67,13 @@ const HomeDetail: React.FC = () => {
     if (!home) return;
 
     try {
+      // Direct booking without payment gateway
+      const response = await addBooking(home._id);
+      if (response) {
+        navigate("/my-bookings");
+      }
+
+      /*
       const data: CreateOrderResponse = await createOrder(home._id);
 
       const options = {
@@ -113,6 +120,7 @@ const HomeDetail: React.FC = () => {
       const razorpay = new window.Razorpay(options);
 
       razorpay.open();
+      */
     } catch (error: unknown) {
       console.error(error);
 
@@ -140,14 +148,6 @@ const HomeDetail: React.FC = () => {
 
     fetchHome();
   }, [homeId]);
-
-  useEffect(() => {
-    if (user?.favourites) {
-      dispatch(
-        getFavouritesSuccess(user.favourites)
-      );
-    }
-  }, [user, dispatch]);
 
   if (loading) {
     return (
