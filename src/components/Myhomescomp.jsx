@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMyHomes } from "../controllers/getMyHomes";
+import { getMyHomes } from "../controllers/getmyhomes";
 
 function MyHomes() {
   const [homes, setHomes] = useState([]);
