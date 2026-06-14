@@ -1,6 +1,6 @@
 export const getHomeById = async (homeId) => {
   const response = await fetch(
-    `http://localhost:3000/host/homes/${homeId}`
+    `https://arbnb-backend-testing.onrender.com/host/homes/${homeId}`
   );
 
   const result = await response.json();

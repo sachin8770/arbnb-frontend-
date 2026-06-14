@@ -1,6 +1,6 @@
 export const getFavourites = async () => {
   const response = await fetch(
-    "http://localhost:3000/favourites",
+    "https://arbnb-backend-testing.onrender.com/favourites",
     {
       method: "GET",
       credentials: "include",

@@ -1,6 +1,6 @@
 export const removefromfavourites = async (homeId) => {
   const response = await fetch(
-    `http://localhost:3000/host/remove-favourite/${homeId}`,
+    `https://arbnb-backend-testing.onrender.com/host/remove-favourite/${homeId}`,
     {
       method: "POST",
       credentials: "include",

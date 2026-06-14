@@ -1,5 +1,5 @@
 export const Addhome = async (formData) => {
-  const response = await fetch("http://localhost:3000/host/add-home", {
+  const response = await fetch("https://arbnb-backend-testing.onrender.com/host/add-home", {
     method: "POST",
     credentials: "include",
     body: formData,

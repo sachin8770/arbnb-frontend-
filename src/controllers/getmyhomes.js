@@ -1,6 +1,6 @@
 export const getMyHomes = async () => {
   const response = await fetch(
-    "http://localhost:3000/host/my-homes",
+    "https://arbnb-backend-testing.onrender.com/host/my-homes",
     {
       credentials: "include",
     }

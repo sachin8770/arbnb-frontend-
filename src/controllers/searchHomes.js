@@ -1,6 +1,6 @@
 export const searchHomes = async (searchText) => {
   const response = await fetch(
-    `http://localhost:3000/host/search?query=${searchText}`,
+    `https://arbnb-backend-testing.onrender.com/host/search?query=${searchText}`,
     {
       credentials: "include",
     }

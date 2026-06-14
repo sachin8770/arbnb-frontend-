@@ -1,6 +1,6 @@
 export const addBooking = async (homeId) => {
   const response = await fetch(
-    `http://localhost:3000/host/bookings/${homeId}`,
+    `https://arbnb-backend-testing.onrender.com/host/bookings/${homeId}`,
     {
       method: "POST",
       credentials: "include",

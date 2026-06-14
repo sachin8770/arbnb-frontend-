@@ -1,6 +1,6 @@
 
 export const addFavourite = async (homeId) => {
-  const response = await fetch(`http://localhost:3000/host/add-favourite/${homeId}`,
+  const response = await fetch(`https://arbnb-backend-testing.onrender.com/host/add-favourite/${homeId}`,
     {
       method: "POST",
       credentials: "include",

@@ -1,6 +1,6 @@
 export const postlogoutuser = async () => {
   
-    const response = await fetch("http://localhost:3000/auth/logoutuser", {
+    const response = await fetch("https://arbnb-backend-testing.onrender.com/auth/logoutuser", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

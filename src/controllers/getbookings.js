@@ -1,5 +1,5 @@
 export const getMyBookings = async () => {
-  const response = await fetch("http://localhost:3000/host/my-bookings", {
+  const response = await fetch("https://arbnb-backend-testing.onrender.com/host/my-bookings", {
     credentials: "include",
   });
 

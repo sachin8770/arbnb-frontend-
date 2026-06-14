@@ -2,7 +2,7 @@ export const verifyPayment = async (
   paymentData
 ) => {
   const response = await fetch(
-    "http://localhost:3000/booking/verify-payment",
+    "https://arbnb-backend-testing.onrender.com/booking/verify-payment",
     {
       method: "POST",
       credentials: "include",
