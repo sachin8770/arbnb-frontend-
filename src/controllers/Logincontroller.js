@@ -1,5 +1,7 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const postloginuser = async (formData) => {
-  const response = await fetch("https://arbnb-backend-testing.onrender.com/auth/loginuser", {
+  const response = await fetch(`${API_BASE_URL}/auth/loginuser`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

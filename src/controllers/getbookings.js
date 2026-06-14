@@ -1,5 +1,7 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const getMyBookings = async () => {
-  const response = await fetch("https://arbnb-backend-testing.onrender.com/host/my-bookings", {
+  const response = await fetch(`${API_BASE_URL}/host/my-bookings`, {
     credentials: "include",
   });
 

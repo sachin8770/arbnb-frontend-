@@ -1,5 +1,7 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const gethomesfrmdb = async () => {
-    const response = await fetch("https://arbnb-backend-testing.onrender.com/gethomes", {
+    const response = await fetch(`${API_BASE_URL}/gethomes`, {
         method: "GET",
         credentials:"include",
         headers: {

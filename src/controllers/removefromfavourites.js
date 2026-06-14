@@ -1,6 +1,8 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const removefromfavourites = async (homeId) => {
   const response = await fetch(
-    `https://arbnb-backend-testing.onrender.com/host/remove-favourite/${homeId}`,
+    `${API_BASE_URL}/host/remove-favourite/${homeId}`,
     {
       method: "POST",
       credentials: "include",

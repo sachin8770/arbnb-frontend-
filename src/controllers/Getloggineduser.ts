@@ -1,4 +1,5 @@
 import { ApiResponse } from "../types/Apiresponse";
+import { API_BASE_URL } from "./apiConfig";
 
 export interface User {
   _id: string;
@@ -11,7 +12,7 @@ interface UserData {
   user: User;
 }
 export const getloginuser = async () => {
-    const response = await fetch("https://arbnb-backend-testing.onrender.com/getloginuser", {
+    const response = await fetch(`${API_BASE_URL}/auth/getloginuser`, {
         method: "GET",
         credentials:"include",
         headers: {

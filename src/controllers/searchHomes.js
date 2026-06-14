@@ -1,6 +1,8 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const searchHomes = async (searchText) => {
   const response = await fetch(
-    `https://arbnb-backend-testing.onrender.com/host/search?query=${searchText}`,
+    `${API_BASE_URL}/host/search?query=${searchText}`,
     {
       credentials: "include",
     }

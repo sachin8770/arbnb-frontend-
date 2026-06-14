@@ -1,6 +1,8 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const getFavourites = async () => {
   const response = await fetch(
-    "https://arbnb-backend-testing.onrender.com/favourites",
+    `${API_BASE_URL}/favourites`,
     {
       method: "GET",
       credentials: "include",

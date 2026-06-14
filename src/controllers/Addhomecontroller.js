@@ -1,5 +1,7 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const Addhome = async (formData) => {
-  const response = await fetch("https://arbnb-backend-testing.onrender.com/host/add-home", {
+  const response = await fetch(`${API_BASE_URL}/host/add-home`, {
     method: "POST",
     credentials: "include",
     body: formData,

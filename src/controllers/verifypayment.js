@@ -1,8 +1,10 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const verifyPayment = async (
   paymentData
 ) => {
   const response = await fetch(
-    "https://arbnb-backend-testing.onrender.com/booking/verify-payment",
+    `${API_BASE_URL}/host/verify-payment`,
     {
       method: "POST",
       credentials: "include",

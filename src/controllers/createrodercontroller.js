@@ -1,7 +1,9 @@
 
+import { API_BASE_URL } from "./apiConfig";
+
 export const createOrder = async (homeId) => {
   const response = await fetch(
-  `https://arbnb-backend-testing.onrender.com/booking/create-order/${homeId}`,
+  `${API_BASE_URL}/host/create-order/${homeId}`,
   {
     method: "POST",
     credentials: "include",
