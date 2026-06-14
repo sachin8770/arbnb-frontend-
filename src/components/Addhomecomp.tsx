@@ -36,7 +36,7 @@ function AddHome() {
 
       console.log(addhomedata);
 
-      dispatch(addHomeSuccess(addhomedata));
+      dispatch(addHomeSuccess(addhomedata.data));
 
       dispatch(resetFetchdone());
 

@@ -1,8 +1,12 @@
 export interface Home {
   _id: string;
-  isFavourite: boolean;
-
-
-  title?: string;
-  price?: number;
+  owner: string;
+  name: string;
+  description: string;
+  price: number;
+  location: string;
+  rating: number;
+  photo: string;
+  isAvailable: boolean;
+  isFavourite?: boolean;
 }

@@ -2,9 +2,10 @@ import { ApiResponse } from "../types/Apiresponse";
 
 export interface User {
   _id: string;
-  username: string;
+  fullName: string;
   email: string;
- 
+  role: string;
+  favourites: string[];
 }
 interface UserData {
   user: User;
