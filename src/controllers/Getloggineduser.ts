@@ -11,7 +11,7 @@ interface UserData {
   user: User;
 }
 export const getloginuser = async () => {
-    const response = await fetch("http://localhost:3000/auth/getloginuser", {
+    const response = await fetch("https://arbnb-backend-testing.onrender.com/getloginuser", {
         method: "GET",
         credentials:"include",
         headers: {
