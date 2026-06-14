@@ -1,5 +1,5 @@
 export const gethomesfrmdb = async () => {
-    const response = await fetch("http://localhost:3000/gethomes", {
+    const response = await fetch("https://arbnb-backend-testing.onrender.com/gethomes", {
         method: "GET",
         credentials:"include",
         headers: {
