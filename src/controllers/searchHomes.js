@@ -1,6 +1,8 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const searchHomes = async (searchText) => {
   const response = await fetch(
-    `http://localhost:3000/host/search?query=${searchText}`,
+    `${API_BASE_URL}/host/search?query=${searchText}`,
     {
       credentials: "include",
     }

@@ -1,6 +1,8 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const addBooking = async (homeId) => {
   const response = await fetch(
-    `http://localhost:3000/host/bookings/${homeId}`,
+    `${API_BASE_URL}/host/bookings/${homeId}`,
     {
       method: "POST",
       credentials: "include",

@@ -1,6 +1,8 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const getFavourites = async () => {
   const response = await fetch(
-    "http://localhost:3000/favourites",
+    `${API_BASE_URL}/favourites`,
     {
       method: "GET",
       credentials: "include",

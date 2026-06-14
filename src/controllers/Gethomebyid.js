@@ -1,6 +1,8 @@
+import { API_BASE_URL } from "./apiConfig";
+
 export const getHomeById = async (homeId) => {
   const response = await fetch(
-    `http://localhost:3000/host/homes/${homeId}`
+    `${API_BASE_URL}/host/homes/${homeId}`
   );
 
   const result = await response.json();
